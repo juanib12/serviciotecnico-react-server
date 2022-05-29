@@ -22,17 +22,22 @@ const Ordenes = new Schema({
     required: true,
   },
   precio: {
-      type: Number,
-      default: 0,
+    type: Number,
+    required: true,
+    default: 0,
   },
   fecha_reparacion: {
     type: Date,
     required: true,
   },
   estado: {
-      type: ["EN PROCESO", "LISTA", "ENTREGADA", "NO ENTREGADA"],
-      required: true,
-  }
+    type: String,
+    required: true,
+  },
+  repuesto: {
+    type: String,
+    required: false,
+  },
 });
 
 module.exports = mongoose.model("Ordenes", Ordenes);
