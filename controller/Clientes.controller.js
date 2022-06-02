@@ -6,8 +6,8 @@ const Cliente = {
     res.status(200).send(clientes);
   },
   get: async (req, res) => {
-    const { id } = req.params;
-    const cliente = await Clientes.findOne({ _id: id });
+    const { dni } = req.params;
+    const cliente = await Clientes.findOne({ dni: dni });
     res.status(200).send(cliente);
   },
   create: async (req, res) => {

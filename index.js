@@ -5,6 +5,11 @@ const Cliente = require("./controller/Clientes.controller")
 const Orden = require("./controller/Ordenes.controller")
 const Repuesto = require("./controller/Repuestos.controller")
 const Equipo = require("./controller/Equipos.controller")
+const cookieParser = require("cookie-parser")
+const bodyParser = require("body-parser")
+const session = require("express-session")
+const passport = require("passport");
+require("dotenv").config();
 
 mongoose.connect(
   "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
@@ -15,8 +20,17 @@ mongoose.connect(
   }
 );
 
+require("./middleware/authenticate");
+require("./middleware/LocalStrategy");
+require("./middleware/JwtStrategy");
+const userRouter = require("./routes/userRoutes");
+
 const app = express();
+app.use(express.urlencoded({extended: true}))
 app.use(express.json());
+app.use(session({secret: 'SECRET', resave: true, saveUninitialized: true}))
+app.use(bodyParser.json())
+app.use(cookieParser(process.env.COOKIE_SECRET));
 
 const corsOptions = {
   origin: "http://localhost:3000",
@@ -24,9 +38,13 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.use(passport.initialize())
+app.use(passport.session())
+
+app.use("/user", userRouter)
 
 app.get("/clientes", Cliente.list);
-app.get("/clientes/:id", Cliente.get);
+app.get("/clientes/:dni", Cliente.get);
 app.post("/clientes", Cliente.create);
 app.put("/clientes/:id", Cliente.update);
 app.patch("/clientes/:id", Cliente.update);
@@ -47,7 +65,7 @@ app.patch("/repuestos/:id", Repuesto.update);
 app.delete("/repuestos/:id", Repuesto.destroy);
 
 app.get("/equipos", Equipo.list);
-app.get("/equipos/:id", Equipo.get);
+app.get("/equipos/:nro_serie", Equipo.get);
 app.post("/equipos", Equipo.create);
 app.put("/equipos/:id", Equipo.update);
 app.patch("/equipos/:id", Equipo.update);

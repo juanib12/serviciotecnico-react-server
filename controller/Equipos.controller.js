@@ -6,8 +6,8 @@ const Equipo = {
     res.status(200).send(equipos);
   },
   get: async (req, res) => {
-    const { id } = req.params;
-    const equipo = await Equipos.findOne({ _id: id });
+    const { nro_serie } = req.params;
+    const equipo = await Equipos.findOne({ nro_serie: nro_serie });
     res.status(200).send(equipo);
   },
   create: async (req, res) => {
