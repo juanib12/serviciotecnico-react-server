@@ -35,7 +35,7 @@ const Ordenes = new Schema({
     required: true,
   },
   repuesto: {
-    type: String,
+    type: [],
     required: false,
   },
 });
