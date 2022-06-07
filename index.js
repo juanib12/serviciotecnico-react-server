@@ -81,6 +81,6 @@ app.get("/repuestosorden", RepuestosOrden.list);
 app.get("/repuestosorden/:nro_orden", RepuestosOrden.get);
 app.post("/repuestosorden", RepuestosOrden.create);
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Funcionando en el puerto 3001");
 });

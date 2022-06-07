@@ -3,12 +3,11 @@ const Schema = mongoose.Schema;
 
 const RepuestosOrden = new Schema({
   descripcion: {
-    type: String,
+    type: [],
     default: "",
   },
   nro_orden: {
     type: String,
-    required: true,
     default: 0,
   }
 });

@@ -7,7 +7,7 @@ const RepuestosOrd = {
   },
   get: async (req, res) => {
     const { nro_orden } = req.params;
-    const repuesto = await RepuestosOrden.findOne({ nro_orden: nro_orden });
+    const repuesto = await RepuestosOrden.find({ nro_orden: nro_orden });
     res.status(200).send(repuesto);
   },
   create: async (req, res) => {
