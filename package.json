@@ -1,11 +1,14 @@
 {
+  "homepage":"https://juanib12.github.io/serviciotecnico-react-server",
   "name": "server",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "keywords": [],
   "author": "",
@@ -27,5 +30,8 @@
     "passport-jwt": "^4.0.0",
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^4.0.0"
   }
 }
