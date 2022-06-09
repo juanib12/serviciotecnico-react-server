@@ -27,6 +27,7 @@ require("./middleware/authenticate");
 require("./middleware/LocalStrategy");
 require("./middleware/JwtStrategy");
 const userRouter = require("./routes/userRoutes");
+const idRouter = require("./routes/IdRoutes")
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -45,6 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/user", userRouter);
+app.use("/serial", idRouter)
 
 app.get("/clientes", Cliente.list);
 app.get("/clientes/:dni", Cliente.get);
