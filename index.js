@@ -7,7 +7,7 @@ const Repuesto = require("./controller/Repuestos.controller");
 const Equipo = require("./controller/Equipos.controller");
 const BuscarOrden = require("./controller/BuscarOrden.controller");
 const BuscarCliente = require("./controller/BuscarCliente.controller");
-const RepuestosOrden = require("./controller/RepuestosOrden.controller")
+const RepuestosOrden = require("./controller/RepuestosOrden.controller");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
@@ -72,6 +72,10 @@ app.get("/buscarcliente/:dni", BuscarCliente.get);
 app.get("/repuestosorden", RepuestosOrden.list);
 app.get("/repuestosorden/:nro_orden", RepuestosOrden.get);
 app.post("/repuestosorden", RepuestosOrden.create);
+
+app.get("/", (req, res, next) => {
+  res.send("Hola")
+});
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Funcionando en el puerto 3001");
