@@ -16,7 +16,7 @@ const Clientes = require("./models/Clientes");
 require("dotenv").config();
 
 mongoose.connect(
-  "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
+  process.env.DB_URL,
   { useNewUrlParser: true },
   (err) => {
     if (err) return err;
