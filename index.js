@@ -15,14 +15,16 @@ const passport = require("passport");
 const Clientes = require("./models/Clientes");
 require("dotenv").config();
 
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true},
-  (err) => {
-    if (err) return console.log("AAAAAAAAAAAAAAAAAAAA NO ANDA");
-    console.log("conectado a mongodb");
-  }
-);
+mongoose
+  .connect(
+    process.env.MONGODB_URI, //  <--- UPDATE
+    { useNewUrlParser: true }
+  )
+  .then((x) =>
+    console
+      .log("Connected to the DB")
+      .catch((err) => console.error("Error while connecting to DB", err))
+  );
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -66,7 +68,6 @@ app.put("/repuestos/:id", Repuesto.update);
 app.patch("/repuestos/:id", Repuesto.update);
 app.delete("/repuestos/:id", Repuesto.destroy);
 
-
 //EQUIPOS
 app.get("/equipos", Equipo.list);
 app.get("/equipos/:nro_serie", Equipo.get);
@@ -79,14 +80,13 @@ app.delete("/equipos/:id", Equipo.destroy);
 app.get("/buscarorden/:nro_orden", BuscarOrden.get);
 app.get("/buscarcliente/:dni", BuscarCliente.get);
 
-
 //REPUESTOS ORDN
 app.get("/repuestosorden", RepuestosOrden.list);
 app.get("/repuestosorden/:nro_orden", RepuestosOrden.get);
 app.post("/repuestosorden", RepuestosOrden.create);
 
 app.get("/", (req, res, next) => {
-  res.send("Hola")
+  res.send("Hola");
 });
 
 app.listen(process.env.PORT || 3001, () => {
