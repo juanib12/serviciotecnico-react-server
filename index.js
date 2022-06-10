@@ -17,7 +17,7 @@ require("dotenv").config();
 
 mongoose.Promise = Promise
 mongoose.connect(
-  process.env.DB_URL || "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
+  "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
   { useNewUrlParser: true },
   (err) => {
     if (err) return console.log("error no se pudo conectar a mongo");
