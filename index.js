@@ -17,9 +17,9 @@ require("dotenv").config();
 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
-  { useNewUrlParser: true },
+  { useNewUrlParser: true, useUnifiedTopology: true},
   (err) => {
-    if (err) return err;
+    if (err) return console.log("AAAAAAAAAAAAAAAAAAAA NO ANDA");
     console.log("conectado a mongodb");
   }
 );
