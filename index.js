@@ -40,7 +40,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //CLIENTES
-app.get("/clientes", (req, res) => {
+app.get("/clientes", async (req, res) => {
   const clientes = await Clientes.find();
   res.status(200).send(clientes);
 });
