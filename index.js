@@ -19,14 +19,13 @@ mongoose.connect(
   process.env.DB_URL,
   { useNewUrlParser: true },
   (err) => {
-    if (err) return err;
+    if (err) return console.log("no se conecto a mongodb :(");
     console.log("conectado a mongodb");
   }
 );
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(session({ secret: "SECRET", resave: true, saveUninitialized: true }));
 app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
