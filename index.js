@@ -17,14 +17,12 @@ require("dotenv").config();
 
 mongoose
   .connect(
-    process.env.MONGODB_URI, //  <--- UPDATE
+    process.env.MONGODB_URI || "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority", //  <--- UPDATE
     { useNewUrlParser: true }
   )
-  .then((x) =>
-    console
-      .log("Connected to the DB")
-      .catch((err) => console.error("Error while connecting to DB", err))
-  );
+  .then((x) => console.log("Connected to the DB"))
+  .catch((err) => console.error("Error while connecting to DB", err));
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
