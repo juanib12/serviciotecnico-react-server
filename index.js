@@ -15,15 +15,16 @@ const passport = require("passport");
 const Clientes = require("./models/Clientes");
 require("dotenv").config();
 
-mongoose.Promise = Promise
-mongoose.connect(
-  "mongodb+srv://juanibianco:reginabianco123@juani.rtfiz.mongodb.net/serviciotecnico?retryWrites=true&w=majority",
-  { useNewUrlParser: true },
-  (err) => {
-    if (err) return console.log("error no se pudo conectar a mongo");
-    console.log("conectado a mongodb");
-  }
-);
+
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://juanibianco:<password>@juani.rtfiz.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
