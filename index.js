@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 const corsOptions = {
-  origin: "https://client-tec.herokuapp.com",
+  origin: "https://serviciotecnico-react-client.vercel.app",
   credentials: true,
 };
 
