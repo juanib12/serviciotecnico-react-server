@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: "https://client-tec.herokuapp.com",
   credentials: true,
 };
 
