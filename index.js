@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 const corsOptions = {
-  origin: "https://techfix-app.vercel.app",
+  origin: "https://techfix-appdemo.vercel.app",
   credentials: true,
 };
 
