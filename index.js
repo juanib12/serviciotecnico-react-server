@@ -77,6 +77,7 @@ app.delete("/equipos/:id", Equipo.destroy);
 //BUSCAr
 app.get("/buscarorden/:nro_orden", BuscarOrden.get);
 app.get("/buscarcliente/:dni", BuscarCliente.get);
+app.get("/clientes/:user", BuscarCliente.byUser)
 
 //REPUESTOS ORDN
 app.get("/repuestosorden", RepuestosOrden.list);
