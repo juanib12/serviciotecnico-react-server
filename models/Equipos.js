@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Equipos = new Schema({
+  user:{
+    type: String,
+    default: "",
+  },
   nro_serie: {
     type: String,
     required: true,

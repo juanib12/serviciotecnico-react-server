@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Ordenes = new Schema({
+  user:{
+    type: String,
+    default: "",
+  },
   nro_orden: {
     type: String,
     required: true,

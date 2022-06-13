@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const Repuestos = new Schema({
+  user:{
+    type: String,
+    default: "",
+  },
   id_repuesto: {
     type: Number,
     required: true,

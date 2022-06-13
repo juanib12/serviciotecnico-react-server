@@ -2,6 +2,10 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const RepuestosOrden = new Schema({
+  user:{
+    type: String,
+    default: "",
+  },
   descripcion: {
     type: [],
     default: "",
