@@ -7,6 +7,7 @@ const Repuesto = require("./controller/Repuestos.controller");
 const Equipo = require("./controller/Equipos.controller");
 const BuscarOrden = require("./controller/BuscarOrden.controller");
 const BuscarCliente = require("./controller/BuscarCliente.controller");
+const ClientesUser = require("./controller/ClienteUser")
 const RepuestosOrden = require("./controller/RepuestosOrden.controller");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
@@ -77,7 +78,7 @@ app.delete("/equipos/:id", Equipo.destroy);
 //BUSCAr
 app.get("/buscarorden/:nro_orden", BuscarOrden.get);
 app.get("/buscarcliente/:dni", BuscarCliente.get);
-app.get("/clientes/:user", BuscarCliente.byUser)
+app.get("/clientes/:user", ClientesUser.byUser)
 
 //REPUESTOS ORDN
 app.get("/repuestosorden", RepuestosOrden.list);
