@@ -7,6 +7,7 @@ const Clientes = new Schema({
     default: "",
   },
   name: {
+  
     type: String,
     required: true,
     default: "",
